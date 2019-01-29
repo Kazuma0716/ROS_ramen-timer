@@ -1,0 +1,8 @@
+<launch>
+  <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch">
+     <arg name="port" value="9000"/>
+  </include>
+  <node pkg="ros_ramen-timer" name="count2" type="count2.py" required="true" />
+  <node pkg="ros_ramen-timer" name="twice2" type="twice2.py" required="true" />
+  <node pkg="ros_ramen-timer" name="webserver" type="webserver.py" args="8000" required="true" />
+</launch>

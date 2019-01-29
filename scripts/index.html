@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+   <span id="count2">not received</span>
+
+<!-- 本来はコメントアウトされているリンクが正式なものであるが、12/8現在、リンク切れ -->
+<!--<script src="http://cdn.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script> -->
+   <script src="https://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
+<!--   <script src="http://cdn.robotwebtools.org/roslibjs/current/roslib.min.js"></script> -->
+   <script src="https://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+   <script src="./main.js"></script>
+
+<script>
+var ros = new ROSLIB.Ros({ url : 'ws://' + location.hostname + ':9000' });
+                                                   
+ros.on('connection', function() {console.log('websocket: connected');});
+ros.on('error', function(error) {console.log('websocket error: ', error); });
+ros.on('close', function() {console.log('websocket: closed');});
+
+var ls = new ROSLIB.Topic({
+        ros : ros,
+        name : '/twice2',
+        messageType : 'std_msgs/Int32'
+});
+
+ls.subscribe(function(message) {
+        str = JSON.stringify(message);
+        document.getElementById("count2").innerHTML = str;
+        console.log(str);                                  
+});
+</script>
+  </body>
+</html>
+
+
