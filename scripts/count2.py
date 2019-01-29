@@ -8,6 +8,9 @@ if __name__ == '__main__':
     rate = rospy.Rate(1)
     n = 180
     while not rospy.is_shutdown():
-        n -= 1
-        pub.publish(n)
-        rate.sleep()
+        while ( n > 0):
+		n -= 1
+       		pub.publish(n)
+        	rate.sleep()
+	else:
+		n = 0
