@@ -11,7 +11,7 @@ $ cd ~/catkin_ws
 $ catkin_make
 $ roslaunch ros_ramen-timer ramen-timer.launch
 ```
-インターネットブラウザで$ http://ラズパイのIPアドレス:8000 にアクセス
+インターネットブラウザで$ http://(ラズパイのIPアドレス):8000 にアクセス
 
 
 ![ramen-timer1](https://user-images.githubusercontent.com/38623336/51949798-59eb2d80-2471-11e9-990d-2535f113d7fb.png)
